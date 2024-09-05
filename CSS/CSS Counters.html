@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ol {
+          counter-reset: section;
+          list-style-type: none;
+        }
+        
+        li::before {
+          counter-increment: section;
+          content: counters(section,".") " ";
+        }
+        </style>
+</head>
+<body>
+    <ol>
+        <li>item : Nguyen Van Loc - 2121051354</li>
+        <li>item  : Nguyen Van Loc - 2121051354  
+        <ol>
+          <li>item : Nguyen Van Loc - 2121051354</li>
+          <li>item : Nguyen Van Loc - 2121051354</li>
+          <li>item : Nguyen Van Loc - 2121051354
+          <ol>
+            <li>item : Nguyen Van Loc - 2121051354</li>
+            <li>item : Nguyen Van Loc - 2121051354</li>
+            <li>item : Nguyen Van Loc - 2121051354</li>
+          </ol>
+          </li>
+          <li>item : Nguyen Van Loc - 2121051354</li>
+        </ol>
+        </li>
+        <li>item : Nguyen Van Loc - 2121051354</li>
+        <li>item : Nguyen Van Loc - 2121051354</li>
+      </ol>
+      
+      <ol>
+        <li>item : Nguyen Van Loc - 2121051354</li>
+        <li>item : Nguyen Van Loc - 2121051354</li>
+      </ol>
+</body>
+</html>

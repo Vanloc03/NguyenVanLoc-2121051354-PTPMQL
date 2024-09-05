@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+          position: relative;
+        }
+        
+        .black-box {
+          position: relative;
+          border: 2px solid black;
+          height: 100px;
+          margin: 30px;
+        }
+        
+        .gray-box {
+          position: absolute;
+          background: lightgray;
+          height: 60px;  
+          width: 70%;
+          left: 50px;
+          top: 50px;
+        }
+        
+        .green-box {
+          position: absolute;
+          background: lightgreen;
+          width: 35%;
+          left: 270px;
+          top: -15px;
+          height: 100px;
+        }
+        </style>
+</head>
+<body>
+    <h1>Overlapping elements : Nguyen Van Loc - 2121051354</h1>
+
+<p>If two positioned elements overlap each other without a z-index specified,
+the element defined last in the HTML code will be shown on top: : Nguyen Van Loc - 2121051354</p>
+
+<div class="container">
+  <div class="black-box">Black box : Nguyen Van Loc - 2121051354</div>
+  <div class="gray-box">Gray box : Nguyen Van Loc - 2121051354</div>
+  <div class="green-box">Green box : Nguyen Van Loc - 2121051354</div>
+</div>
+</body>
+</html>
