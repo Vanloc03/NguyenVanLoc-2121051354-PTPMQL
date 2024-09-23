@@ -1,7 +1,12 @@
-using DemoMvc.Data;
-using DemoMVC.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using DemoMVC.Models.Entities;
+using DemoMvc.Data;
 
 namespace DemoMVC.Controllers
 {
@@ -17,8 +22,7 @@ namespace DemoMVC.Controllers
         // GET: NguyenVanLoc
         public async Task<IActionResult> Index()
         {
-            var models = await _context.NguyenVanLoc.ToListAsync();
-            return View(models);
+            return View(await _context.NguyenVanLoc.ToListAsync());
         }
 
         // GET: NguyenVanLoc/Details/5
@@ -148,17 +152,6 @@ namespace DemoMVC.Controllers
         private bool NguyenVanLocExists(string id)
         {
             return _context.NguyenVanLoc.Any(e => e.NguyenVanLocID == id);
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return obj is NguyenVanLocController controller &&
-                   EqualityComparer<ApplicationDbContext>.Default.Equals(_context, controller._context);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(_context);
         }
     }
 }
