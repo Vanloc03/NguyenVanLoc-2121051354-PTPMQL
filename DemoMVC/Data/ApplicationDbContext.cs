@@ -16,5 +16,6 @@ namespace DemoMvc.Data
         public DbSet<DemoMVC.Models.HeThongPhanPhoi> HeThongPhanPhoi { get; set; } = default!;
         public DbSet<DemoMVC.Models.DaiLy> DaiLy { get; set; } = default!;
         public DbSet<DemoMVC.Models.person> person { get; set; } = default!;
+        public DbSet<Customer> Customer { get; set; } = default!;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using DemoMvc.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240928061814_Create_Table_Customer")]
+    partial class Create_Table_Customer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -44,7 +47,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("MaDaiLy");
 
-                    b.ToTable("DaiLy", (string)null);
+                    b.ToTable("DaiLy");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Entities.Customer", b =>
@@ -67,7 +70,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("CustomerID");
 
-                    b.ToTable("Customer", (string)null);
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Entities.NguyenVanLoc", b =>
@@ -85,7 +88,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("NguyenVanLocID");
 
-                    b.ToTable("NguyenVanLoc", (string)null);
+                    b.ToTable("NguyenVanLoc");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.Entities.Student", b =>
@@ -107,7 +110,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.ToTable("Student", (string)null);
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.HeThongPhanPhoi", b =>
@@ -121,7 +124,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("MaHTPP");
 
-                    b.ToTable("HeThongPhanPhoi", (string)null);
+                    b.ToTable("HeThongPhanPhoi");
                 });
 
             modelBuilder.Entity("DemoMVC.Models.person", b =>
@@ -139,7 +142,7 @@ namespace DemoMVC.Migrations
 
                     b.HasKey("personId");
 
-                    b.ToTable("person", (string)null);
+                    b.ToTable("person");
                 });
 #pragma warning restore 612, 618
         }
