@@ -10,12 +10,9 @@ namespace DemoMvc.Data
             : base(options)
         {
         }
+        public DbSet<Person> Person { get; set; } = default!;
+        public DbSet<Employee> Employee { get; set; } = default!;
 
-        public DbSet<NguyenVanLoc> NguyenVanLoc { get; set; } = default!;
-        public DbSet<DemoMVC.Models.Entities.Student> Student { get; set; } = default!;
-        public DbSet<DemoMVC.Models.HeThongPhanPhoi> HeThongPhanPhoi { get; set; } = default!;
-        public DbSet<DemoMVC.Models.DaiLy> DaiLy { get; set; } = default!;
-        public DbSet<DemoMVC.Models.person> person { get; set; } = default!;
-        public DbSet<Customer> Customer { get; set; } = default!;
     }
 }
+

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240921073221_Create_table_Student")]
-    partial class Create_table_Student
+    [Migration("20241008144050_Create_Table_Employee")]
+    partial class Create_Table_Employee
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,40 +19,46 @@ namespace DemoMVC.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
-            modelBuilder.Entity("DemoMVC.Models.Entities.NguyenVanLoc", b =>
+            modelBuilder.Entity("DemoMVC.Models.Entities.Person", b =>
                 {
-                    b.Property<string>("NguyenVanLocID")
+                    b.Property<string>("PersonID")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Address")
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HoTen")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("QueQuan")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("NguyenVanLocID");
+                    b.HasKey("PersonID");
 
-                    b.ToTable("NguyenVanLoc");
+                    b.ToTable("Person");
+
+                    b.HasDiscriminator().HasValue("Person");
+
+                    b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("DemoMVC.Models.Entities.Student", b =>
+            modelBuilder.Entity("DemoMVC.Models.Entities.Employee", b =>
                 {
-                    b.Property<string>("StudentId")
-                        .HasColumnType("TEXT");
+                    b.HasBaseType("DemoMVC.Models.Entities.Person");
 
-                    b.Property<string>("Address")
+                    b.Property<string>("Company")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("EmployeeID")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("StudentId");
-
-                    b.ToTable("Student");
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 #pragma warning restore 612, 618
         }

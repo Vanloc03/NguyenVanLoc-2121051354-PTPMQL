@@ -5,27 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DemoMVC.Models;
+using DemoMVC.Models.Entities;
 using DemoMvc.Data;
 
 namespace DemoMVC.Controllers
 {
-    public class personController : Controller
+    public class PersonController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public personController(ApplicationDbContext context)
+        public PersonController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: person
+        // GET: Person
         public async Task<IActionResult> Index()
         {
-            return View(await _context.person.ToListAsync());
+            return View(await _context.Person.ToListAsync());
         }
 
-        // GET: person/Details/5
+        // GET: Person/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,8 +33,8 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var person = await _context.person
-                .FirstOrDefaultAsync(m => m.personId == id);
+            var person = await _context.Person
+                .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
                 return NotFound();
@@ -43,18 +43,18 @@ namespace DemoMVC.Controllers
             return View(person);
         }
 
-        // GET: person/Create
+        // GET: Person/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: person/Create
+        // POST: Person/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("personId,FullName,Address")] person person)
+        public async Task<IActionResult> Create([Bind("PersonID,HoTen,QueQuan")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace DemoMVC.Controllers
             return View(person);
         }
 
-        // GET: person/Edit/5
+        // GET: Person/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var person = await _context.person.FindAsync(id);
+            var person = await _context.Person.FindAsync(id);
             if (person == null)
             {
                 return NotFound();
@@ -81,14 +81,14 @@ namespace DemoMVC.Controllers
             return View(person);
         }
 
-        // POST: person/Edit/5
+        // POST: Person/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("personId,FullName,Address")] person person)
+        public async Task<IActionResult> Edit(string id, [Bind("PersonID,HoTen,QueQuan")] Person person)
         {
-            if (id != person.personId)
+            if (id != person.PersonID)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace DemoMVC.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!personExists(person.personId))
+                    if (!PersonExists(person.PersonID))
                     {
                         return NotFound();
                     }
@@ -116,7 +116,7 @@ namespace DemoMVC.Controllers
             return View(person);
         }
 
-        // GET: person/Delete/5
+        // GET: Person/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -124,8 +124,8 @@ namespace DemoMVC.Controllers
                 return NotFound();
             }
 
-            var person = await _context.person
-                .FirstOrDefaultAsync(m => m.personId == id);
+            var person = await _context.Person
+                .FirstOrDefaultAsync(m => m.PersonID == id);
             if (person == null)
             {
                 return NotFound();
@@ -134,24 +134,24 @@ namespace DemoMVC.Controllers
             return View(person);
         }
 
-        // POST: person/Delete/5
+        // POST: Person/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var person = await _context.person.FindAsync(id);
+            var person = await _context.Person.FindAsync(id);
             if (person != null)
             {
-                _context.person.Remove(person);
+                _context.Person.Remove(person);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool personExists(string id)
+        private bool PersonExists(string id)
         {
-            return _context.person.Any(e => e.personId == id);
+            return _context.Person.Any(e => e.PersonID == id);
         }
     }
 }
